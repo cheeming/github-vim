@@ -146,9 +146,8 @@ endfunction
 " executes cmd in the given dir
 function! s:CdExec(dir,cmd)
   let cur_dir=getcwd()
-  exe 'lcd '.a:dir
-  let output=system(a:cmd)
-  exe 'lcd '.cur_dir
+  let output=system("cd ".a:dir." && ".a:cmd)
+  exe 'lcd "'.cur_dir.'"'
   return output
 endfunction
 
